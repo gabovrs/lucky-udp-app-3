@@ -1,5 +1,6 @@
 import React from 'react';
 import { useAuth } from '../context/AuthContext';
+import logo from '../assets/logo.png';
 
 const Navbar: React.FC = () => {
   const { user, loading, logout } = useAuth();
@@ -8,7 +9,7 @@ const Navbar: React.FC = () => {
     <header className='navbar'>
       <div className='container nav-wrap'>
         <a className='brand' href='/'>
-          <img src='/src/assets/logo.png' width='80' />
+          <img src={logo} width='80' />
         </a>
         <nav>
           <a className='btn btn-link' href='/info'>Información</a>
