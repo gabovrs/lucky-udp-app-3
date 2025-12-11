@@ -9,9 +9,8 @@ import userRoutes from './routes/user.routes';
 import walletRoutes from './routes/wallet.routes';
 import rouletteRoutes from './routes/roulette.routes';
 
-const FRONTEND_DIST_PATH = path.join(__dirname, '..', '..', 'frontend', 'dist');
-
 dotenv.config();
+
 connectDB();
 
 const app = express();
@@ -32,9 +31,11 @@ app.use('/api', userRoutes);
 app.use('/api', walletRoutes);
 app.use('/api', rouletteRoutes);
 
+const FRONTEND_DIST_PATH = path.join(__dirname, '..', '..', 'frontend', 'dist');
+
 app.use(express.static(FRONTEND_DIST_PATH));
 
-app.get('*', (_req, res) => {
+app.get('/*splat', (_req, res) => {
   res.sendFile(path.join(FRONTEND_DIST_PATH, 'index.html'));
 });
 
